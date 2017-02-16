@@ -1,0 +1,145 @@
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/COMPONENTEN\/ALTIVAR' *)
+(* @OBJECTFLAGS := '0, 8' *)
+(* @SYMFILEFLAGS := '2048' *)
+FUNCTION_BLOCK FB_Altivar71
+VAR_INPUT
+	(*Naam van de drive // eigen keuze*)
+	sName:STRING;
+	(*Inschakelen van de drive // softwarematig starten stoppen van de drive*)
+	bEnable:BOOL:=TRUE;
+	(*Modbus adres van de drive*)
+	byUnitId:BYTE;
+	(*Startbutton drive*)
+	bStart:BOOL;
+	(*Stopbutton drive*)
+	bStop:BOOL;
+	(*Setpunt frequentie drive*)
+	fFrequentie:REAL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	(*Lezen van registers uit de drive // afkomstig uit excel file*)
+	arrModbusReadRegisters:ARRAY [0..30] OF FB_ReadWriteRegModbus:=
+		(sUnit:='Hz (10)',sName:='3202',wAdressRegister:=3202 ,byFunction:=3),
+		(sUnit:='',sName:='3205',wAdressRegister:=3205 ,byFunction:=3),
+		(sUnit:='A',sName:='3204',wAdressRegister:=3204 ,byFunction:=3),
+		(sUnit:='V',sName:='3208',wAdressRegister:=3208 ,byFunction:=3),
+		(sUnit:='kW',sName:='3211',wAdressRegister:=3211 ,byFunction:=3),
+		(sUnit:='h',sName:='3233',wAdressRegister:=3233 ,byFunction:=3),
+		(sUnit:='h',sName:='3236',wAdressRegister:=3236 ,byFunction:=3);
+
+	(*Schrijven van registers naar de drive // afkomstig uit excel file*)
+	arrModbusWriteRegisters:ARRAY [0..5] OF FB_ReadWriteRegModbus:=
+		(sUnit:='SW',sName:='8501',wAdressRegister:=8501 ,byFunction:=8),
+		(sUnit:='Hz (10)',sName:='8502',wAdressRegister:=8502 ,byFunction:=8);
+
+	_bInit:BOOL; 			(*Initialiseren van de bouwsteen*)
+
+	_bWriteActive:BOOL;		(*Read of write is actief // TRUE=> write actief*)
+	bCmd: BOOL;
+
+	(*Aantal te lezen registers*)
+	_iCountReadRegisters:INT; (*Teller om per cyclus een register te schrijven*)
+	_iAantalReadRegisters:INT:=6;
+
+	(*Aantal te schrijven registers*)
+	_iCountwriteRegisters:INT; (*Teller om per cyclus een register te schrijven*)
+	_iAantalwriteRegisters:INT:=1;
+
+	(*Tijd bepalen dat de master wordt vastgehouden*)
+	_fTimer: REAL;
+	(*Master vasthouden *)
+	_fMasterVasthouden: REAL;
+END_VAR
+VAR
+
+END_VAR
+
+(* @END_DECLARATION := '0' *)
+(*
+INFO: Deze blok zorgt voor de communicatie tussen de PLC en de motordrive.
+De blok kan de motor starten, stoppen en de frequentie aansturen
+De blok kan ook verschillende registers uitlezen uit de drive
+*)
+
+(*Aangeven hoeveel registers moeten geschreven/gelezen worden*)
+_iAantalwriteRegisters:=1;
+_iAantalReadRegisters:=6;
+
+(*Doorgeven van de master tussen de verschillende blokken*)
+IF gv_iMasterInGebruikDoor=0 THEN
+	(*Als de master nul is (niet in gebruik) dan wordt deze ingenomen door de drive die het eerst wordt doorlopen*)
+	gv_iMasterInGebruikDoor:=byUnitId;
+END_IF
+(*Als de master vastgehouden wordt door deze drive wordt bijgehouden hoe lang de master wordt vastgehouden *)
+IF gv_iMasterInGebruikDoor=byUnitId THEN
+	_fMasterVasthouden:=_fMasterVasthouden+0.003;
+	(*Als de master langer dan 0.5s vast staat wordt de master vrijgegeven na het afwerken van het laatste commando*)
+	IF _fMasterVasthouden>0.5 AND NOT ModbusMaster.BUSY THEN
+		gv_iMasterInGebruikDoor:=0;
+		_fMasterVasthouden:=0;
+	END_IF
+END_IF
+
+IF bEnable THEN
+	IF NOT _bInit THEN
+		_bWriteActive:=FALSE; (*Eerst registers uitlezen dus voorrang geven aan lezen*)
+		_bInit:=TRUE;
+	END_IF
+
+	(*Write registers*)(*START/STOP*)
+	IF bStart THEN
+		arrModbusWriteRegisters[0].wValueWrite:=15;
+		bStart:=FALSE;
+	END_IF
+
+	IF bStop THEN
+		arrModbusWriteRegisters[0].wValueWrite:=0;
+		bStop:=FALSE;
+	END_IF
+
+	(*Write registers frequentie // frequentie naar drive is echte frequentie * 10*)
+	arrModbusWriteRegisters[1].wValueWrite:=REAL_TO_WORD(MIN(fFrequentie*10,500)); (*Limiet voorzien op 50HZ*)
+
+	(*Verwerken modbus commando*)
+	IF  _bWriteActive THEN
+		arrModbusWriteRegisters[_iCountwriteRegisters](UnitID:=byUnitId, bCmd:=bCmd, pModbusMaster:=ADR(ModbusMaster) );
+		IF _fTimer>0.01 THEN
+			bCmd:=FALSE;
+		END_IF
+		IF NOT ModbusMaster.BUSY AND _fTimer>0.05 THEN
+			_iCountwriteRegisters:=_iCountwriteRegisters+1;
+			bCmd:=TRUE;
+			_fTimer:=0;
+		END_IF
+		IF _iCountwriteRegisters>_iAantalwriteRegisters THEN
+			_iCountwriteRegisters:=0;
+			_bWriteActive:=FALSE;
+		END_IF
+	END_IF
+
+	(*Read registers*)
+	IF  NOT _bWriteActive THEN
+		arrModbusReadRegisters[_iCountReadRegisters](UnitID:=byUnitId, bCmd:=bCmd, pModbusMaster:=ADR(ModbusMaster) );
+		IF _fTimer>0.01 THEN
+			bCmd:=FALSE;
+		END_IF
+		IF NOT ModbusMaster.BUSY  AND _fTimer>0.05 THEN
+			_iCountReadRegisters:=_iCountReadRegisters+1; (*Counter om bij te houden welk register er moet geschreven worden*)
+			_fTimer:=0;
+			bCmd:=TRUE;
+		END_IF
+		IF _iCountReadRegisters>_iAantalReadRegisters THEN
+			_iCountReadRegisters:=0;
+			_bWriteActive:=TRUE;
+		END_IF
+	END_IF
+
+_fTimer:=_fTimer+0.003;
+
+END_IF
+
+END_FUNCTION_BLOCK
