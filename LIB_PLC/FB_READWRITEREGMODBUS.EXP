@@ -1,0 +1,76 @@
+
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @PATH := '\/MODBUS' *)
+(* @OBJECTFLAGS := '0, 8' *)
+(* @SYMFILEFLAGS := '2048' *)
+FUNCTION_BLOCK FB_ReadWriteRegModbus
+VAR_INPUT
+	sName:STRING;
+	sUnit:STRING;
+	(*Bericht versturen*)
+	bCmd:BOOL;
+	(*Modbusadres*)
+	UnitID: BYTE := 3;
+	(*Registers*)
+	wAdressRegister: WORD;
+	(*Values*)
+	wValueWrite: WORD;
+	(*Pointer naar modbusmaster*)
+	pModbusMaster: POINTER TO ModbusRtuMaster_KL6x22B;
+	(*Welk soort bericht*)
+	byFunction:BYTE;
+END_VAR
+
+VAR_OUTPUT
+	wValueRead: WORD;
+	bError:BOOL;
+	byErrorId:MODBUS_ERRORS;	(* Error ID *)
+	bBusy:BOOL;
+END_VAR
+
+VAR
+
+END_VAR
+
+(* @END_DECLARATION := '0' *)
+IF pModbusMaster<>0 THEN
+(*0 is niets uitvoeren *)
+CASE byFunction OF
+3:
+(********************************************************************)
+(*Read*)
+(********************************************************************)
+pModbusMaster^.ReadRegs(
+	UnitID:=UnitID ,
+	Quantity:=1 ,
+	MBAddr:=wAdressRegister ,
+	cbLength:=SIZEOF(wValueRead) ,
+	pMemoryAddr:=ADR(wValueRead) ,
+	Execute:=bCmd ,
+	Timeout:=t#10s ,
+	BUSY=>bBusy ,
+	Error=>bError ,
+	ErrorId=>byErrorId ,
+	cbRead=> ,
+	);
+
+8:
+(********************************************************************)
+(*Write*)
+(********************************************************************)
+pModbusMaster^.WriteRegs(
+	UnitID:=UnitID ,
+	Quantity:=1 ,
+	MBAddr:= wAdressRegister,
+	cbLength:=SIZEOF(wValueWrite) ,
+	pMemoryAddr:=ADR(wValueWrite) ,
+	Execute:=bCmd ,
+	Timeout:=t#10s ,
+	BUSY=>bBusy ,
+	Error=>bError ,
+	ErrorId=>byErrorId ,
+	cbRead=> ,
+	 );
+END_CASE
+END_IF
+END_FUNCTION_BLOCK

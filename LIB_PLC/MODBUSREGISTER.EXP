@@ -1,0 +1,108 @@
+(* @PATH := '\/MODBUS' *)
+
+VISUALISATION ModbusRegister _VISU_TYPES : 1,1
+_BG_BMP : ''
+_TEXT : 4
+_PAINTZOOM : 100
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 1,0
+_POS : 60,0,186,21,123,10
+_COLORS : 16777215,12632256,16777215,0,8421504
+_VARIABLES : '','','','','','','',''
+_THRESH : '$$REG$$.byFunction <> 8','','',''
+_DSP : '$$REG$$.wValueWrite',' %s',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 4,4294967283,400,0,0,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 1,0
+_POS : 60,0,186,21,123,10
+_COLORS : 16777215,12632256,16777215,0,8421376
+_VARIABLES : '','','','','','','',''
+_THRESH : '$$REG$$.byFunction <> 3','','',''
+_DSP : '$$REG$$.wValueRead',' %s',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 4,4294967283,400,0,1,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 1,0
+_POS : 0,0,61,21,30,10
+_COLORS : 16777215,12632256,16777215,0,8421504
+_VARIABLES : '','','','','','','',''
+_THRESH : '','','',''
+_DSP : '$$REG$$.sName',' %s',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 4,4294967283,400,0,2,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 1,0
+_POS : 155,0,186,21,170,10
+_COLORS : 16777215,12632256,16777215,0,8421504
+_VARIABLES : '','','','','','','',''
+_THRESH : '','','',''
+_DSP : '$$REG$$.sUnit',' %s',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 4,4294967287,400,0,3,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+_KEYINFOLIST : 0
+END_VISUALISATION

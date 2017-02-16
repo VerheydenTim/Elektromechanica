@@ -1,0 +1,18 @@
+(* @NESTEDCOMMENTS := 'Yes' *)
+(* @GLOBAL_VARIABLE_LIST := 'MB_GlobalVar' *)
+(* @PATH := '' *)
+(* @OBJECTFLAGS := '0, 8' *)
+(* @SYMFILEFLAGS := '2048' *)
+VAR_GLOBAL
+	(*Modbusmaster*)
+	ModbusMaster: ModbusRtuMaster_KL6x22B; (*Declaratie is globaal omdat deze bouwsteen door meerdere functieblokken wordt gebruikt*)
+	gv_iMasterInGebruikDoor:INT;
+END_VAR
+
+(* @OBJECT_END := 'MB_GlobalVar' *)
+(* @CONNECTIONS := MB_GlobalVar
+FILENAME : ''
+FILETIME : 0
+EXPORT : 0
+NUMOFCONNECTIONS : 0
+*)

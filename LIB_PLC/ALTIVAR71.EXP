@@ -1,0 +1,361 @@
+(* @PATH := '\/COMPONENTEN\/ALTIVAR_71' *)
+
+VISUALISATION Altivar71 _VISU_TYPES : 1,1
+_BG_BMP : ''
+_TEXT : 14
+_PAINTZOOM : 100
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 1,1
+_POS : 25,5,231,591,128,298
+_COLORS : 16777215,0,16777215,0,0
+_VARIABLES : '','','','','','','',''
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,4,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_BUTTON : ''
+_POS : 30,45,121,76,75,60
+_THRESH : '','','$$DRIVE$$.bStart',''
+_INPUT : 65536
+_DSP : '','Start',''
+_ZOOM : ''
+_TEXT : 5,4294967283,400,0,0,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0,157
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @BUTTONCOLORS := '_COLORS : 13158600,0,14474460,0,0' *)
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @GRADIENT_AND_FRAME := '_GRADIENT_AND_FRAME: 0,0,0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+(* @NO_FRAME_AROUND_BITMAP := '_NO_FRAME_AROUND_BITMAP: 0' *)
+
+_BUTTON : ''
+_POS : 130,45,221,76,175,60
+_THRESH : '','','$$DRIVE$$.bStop',''
+_INPUT : 65536
+_DSP : '','Stop',''
+_ZOOM : ''
+_TEXT : 5,4294967283,400,0,1,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0,157
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @BUTTONCOLORS := '_COLORS : 13158600,0,14474460,0,0' *)
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @GRADIENT_AND_FRAME := '_GRADIENT_AND_FRAME: 0,0,0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+(* @NO_FRAME_AROUND_BITMAP := '_NO_FRAME_AROUND_BITMAP: 0' *)
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 0,0
+_POS : 30,10,221,36,125,23
+_COLORS : 16777215,0,16777215,0,0
+_VARIABLES : '','','','','','','',''
+_THRESH : '','','',''
+_DSP : '$$DRIVE$$.sName','%s',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,2,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_SIMPLE : 0
+_LINEWIDTH : 0
+_NOCOLORS : 0,0
+_POS : 30,85,221,126,125,105
+_COLORS : 16777215,0,16777215,0,0
+_VARIABLES : '','','','','','','',''
+_THRESH : '','','',''
+_DSP : '$$DRIVE$$.fFrequentie','Frequentie: %0.1f Hz',''
+_ZOOM : ''
+_INPUT : 1048576
+_TEXT : 4,4294967277,400,0,3,0,0,0
+_FONT : 'Small Fonts'
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,1
+_THRESH2 : '','','',''
+_INPUTTYPE : '0','50',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @EXTENDEDSIMPLESHAPE := '_SIMPLE: 0' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[0]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,180,106,201,68,190
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,5,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[1]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,200,106,221,68,210
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,6,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[2]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,220,106,241,68,230
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,7,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[3]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,240,106,261,68,250
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,8,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[4]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,260,106,281,70,270
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,9,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusReadRegisters[5]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,280,106,301,68,290
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,10,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusWriteRegisters[0]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,315,106,336,68,325
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,11,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+
+_REF : 'ModbusRegister'
+NUM_STRINGS_IN_LIST: 1
+REG
+NUM_STRINGS_IN_LIST: 1
+$DRIVE$.arrModbusWriteRegisters[1]
+_LINEWIDTH : 0
+_NOCOLORS : 0,1
+_POS : 30,335,106,356,68,345
+_COLORS : 0,16777215,0
+_VARIABLES : '','','','','','','',''
+_FRAME : 0,0,2
+_THRESH : '','','',''
+_DSP : '','',''
+_ZOOM : ''
+_INPUT : 0
+_TEXT : 5,4294967283,400,0,12,0,0,0
+_FONT : ''
+_EXEC : ''
+_TEXTVARIABLES : '','','','',''
+_COLORVARIABLES : '','','','','',''
+_ACCESSLEVELS : 2,2,2,2,2,2,2,2
+_OBJECT : 0,0
+_THRESH2 : '','','',''
+_INPUTTYPE : '','',''
+_HIDDENINPUT : 0
+_END_ELEM
+(* @TEXTSCALINGVARS := '_TEXTSCALINGVARS: $'$',$'$'' *)
+(* @INPUTTAPFALSE := '_INPUTTAPFALSE: 0' *)
+_KEYINFOLIST : 0
+END_VISUALISATION
